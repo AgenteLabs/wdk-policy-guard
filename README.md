@@ -11,15 +11,15 @@
 
 A spending-policy layer for wallets built on [Tether's WDK](https://github.com/tetherto/wdk) — or any wallet SDK. It grades a proposed spend against a per-agent envelope *before* anything signs, and returns one of three verdicts: **ALLOW**, **ESCALATE**, or **DENY**, always with a reason.
 
-[![tests](https://github.com/FlashyLabs/wdk-policy-guard/actions/workflows/ci.yml/badge.svg)](https://github.com/FlashyLabs/wdk-policy-guard/actions/workflows/ci.yml)
-[![CodeQL](https://github.com/FlashyLabs/wdk-policy-guard/actions/workflows/codeql.yml/badge.svg)](https://github.com/FlashyLabs/wdk-policy-guard/actions/workflows/codeql.yml)
-[![Scorecard](https://github.com/FlashyLabs/wdk-policy-guard/actions/workflows/scorecard.yml/badge.svg)](https://github.com/FlashyLabs/wdk-policy-guard/security/code-scanning)
+[![tests](https://github.com/AgenteLabs/wdk-policy-guard/actions/workflows/ci.yml/badge.svg)](https://github.com/AgenteLabs/wdk-policy-guard/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/AgenteLabs/wdk-policy-guard/actions/workflows/codeql.yml/badge.svg)](https://github.com/AgenteLabs/wdk-policy-guard/actions/workflows/codeql.yml)
+[![Scorecard](https://github.com/AgenteLabs/wdk-policy-guard/actions/workflows/scorecard.yml/badge.svg)](https://github.com/AgenteLabs/wdk-policy-guard/security/code-scanning)
 [![npm version](https://img.shields.io/npm/v/@flashylabs/wdk-policy-guard.svg)](https://www.npmjs.com/package/@flashylabs/wdk-policy-guard)
 [![npm downloads](https://img.shields.io/npm/dm/@flashylabs/wdk-policy-guard.svg)](https://www.npmjs.com/package/@flashylabs/wdk-policy-guard)
 [![license](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](./LICENSE)
 [![node](https://img.shields.io/badge/node-%3E%3D20-brightgreen.svg)](https://nodejs.org)
 
-Built by [Flashy Labs](https://flashyos.com) — part of the open-source toolkit we ship for teams building on Tether's WDK. Its sibling package is [`@flashylabs/wdk-staking-kit`](https://github.com/FlashyLabs/wdk-staking-kit).
+Built by [Flashy Labs](https://flashyos.com) — part of the open-source toolkit we ship for teams building on Tether's WDK. Its sibling package is [`@flashylabs/wdk-staking-kit`](https://github.com/AgenteLabs/wdk-staking-kit).
 
 ## Why this exists
 
@@ -210,7 +210,7 @@ See [`SECURITY.md`](SECURITY.md) for the threat model and how to report a vulner
 
 ## Provenance
 
-Extracted from the policy engine built for [Flashy Wallet](https://github.com/FlashyLabs/flashy-wallet)'s own agent-facing envelope grading, and open-sourced because the problem it solves — spending limits for an automated caller with a wallet — belongs to every team building on WDK, not just to us. See [`CHANGELOG.md`](CHANGELOG.md).
+Extracted from the policy engine built for [Flashy Wallet](https://github.com/AgenteLabs/flashy-wallet)'s own agent-facing envelope grading, and open-sourced because the problem it solves — spending limits for an automated caller with a wallet — belongs to every team building on WDK, not just to us. See [`CHANGELOG.md`](CHANGELOG.md).
 
 ## Contributing
 
@@ -234,4 +234,18 @@ No prize, no token. A spending-policy layer has enough of those jokes already.
 
 ---
 
-Built by [Flashy Labs](https://flashyos.com), the mesh platform for organisations' agents. If something here is broken, unclear, or just interesting, [open an issue](https://github.com/FlashyLabs/wdk-policy-guard/issues) — we read them.
+## Where this sits: five payment layers
+
+An agent that spends needs five different things. Each is a separate layer with one job, and each states what it never does, so the layers can be adopted one at a time without any of them claiming the others' work.
+
+| Layer | Repository | Does | Never does |
+|---|---|---|---|
+| Format | [agentpay](https://github.com/AgenteLabs/agentpay) | Defines `pay-policy/1` and evaluates a payment to allow, deny or escalate | Move value, hold keys or sign |
+| Guard | [wdk-policy-guard](https://github.com/AgenteLabs/wdk-policy-guard) | Grades a spend against a per-agent envelope before a wallet signs | Decide the policy itself or settle anything |
+| Consent | flashy-rails | Holds a payment until the human it concerns approves it | Approve on a human's behalf |
+| Mandate | [mandate](https://github.com/AgenteLabs/mandate) | Applies one human-set mandate across several payment rails | Choose a rail for its own benefit or take custody |
+| Dispute | [holdfast](https://github.com/AgenteLabs/holdfast) | Records invoices, milestones and evidence, and routes a dispute to a named human or agreed arbiter | Decide a dispute itself |
+
+mandate and holdfast are at thesis stage and nothing in them is live; the table describes what each is for, not what is deployed.
+
+Built by [Flashy Labs](https://flashyos.com), the mesh platform for organisations' agents. If something here is broken, unclear, or just interesting, [open an issue](https://github.com/AgenteLabs/wdk-policy-guard/issues) — we read them.
