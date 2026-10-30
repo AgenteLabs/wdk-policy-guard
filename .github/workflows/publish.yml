@@ -33,6 +33,9 @@ jobs:
           node-version: 20
           registry-url: https://registry.npmjs.org
 
+      - name: Install (prepublishOnly builds the type declarations with tsc, a devDependency)
+        run: npm ci
+
       - name: Verify the npm token can publish before doing anything else
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN_FLASHYOS_CI || secrets.NPM_TOKEN }}
