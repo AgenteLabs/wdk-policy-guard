@@ -4,7 +4,21 @@ All notable changes to this project are documented here. Format loosely follows 
 
 ## Unreleased
 
-**Added:** `INVARIANTS.md` — the three guarantees this layer makes about a spend it stands in front of (never over-reserve a day, never negative, deny and escalate never send), each citing the code that enforces it and the tests that prove it — and `vendor-invariants.mjs`, the estate's `invariants/1` harness vendored byte-for-byte from spec-kit (`test/vendor-invariants.test.mjs` reports drift, and UNKNOWN rather than a pass when spec-kit is not checked out beside this repository). `test/invariants.test.mjs` drives the real `guardSend` and `DailyLedger` through every ordered pair of send / failing send / escalate / deny, and of reserve / release / over-release, under seven schedules including two that cross UTC midnight; through seeded random command sequences with a send still in flight when the day changes; and through one deliberately broken variant per invariant that the harness must refuse — a guard with an `await` between its grade and its reservation, the 0.1.x release keyed on today, a guard that folds `ESCALATE` into allowed. The real component holds every one. `npm run invariants` checks the document against the suite and CI runs it. No behavioural change.
+## 0.3.0 — 2026-10-30
+
+**Changed:** the npm scope moved — this package now publishes as
+[`@flashyfinancial/wdk-policy-guard`](https://www.npmjs.com/package/@flashyfinancial/wdk-policy-guard),
+not `@flashylabs/wdk-policy-guard`. Every import in this README, the shipped
+type declarations, `wdk-policy-guard.manifest.json`, and the publish workflow
+moved with it. **This is a breaking change for anyone with the old name
+pinned** — `npm install @flashyfinancial/wdk-policy-guard` and update the
+import path; nothing about the package's behaviour, exports, or version
+semantics changed. The old name is not removed from the registry: a
+maintainer can run the new `Deprecate old npm scope` workflow
+(`workflow_dispatch` only, never on a push or a schedule) to mark it with
+`npm deprecate`, pointing anyone who installs it at the new scope.
+
+**Added:** `INVARIANTS.md` — the three guarantees this layer makes about a spend it stands in front of (never over-reserve a day, never negative, deny and escalate never send), each citing the code that enforces it and the tests that prove it — and `vendor-invariants.mjs`, the estate's `invariants/1` harness vendored byte-for-byte from spec-kit (`test/vendor-invariants.test.mjs` reports drift, and UNKNOWN rather than a pass when spec-kit is not checked out beside this repository). `test/invariants.test.mjs` drives the real `guardSend` and `DailyLedger` through every ordered pair of send / failing send / escalate / deny, and of reserve / release / over-release, under seven schedules including two that cross UTC midnight; through seeded random command sequences with a send still in flight when the day changes; and through one deliberately broken variant per invariant that the harness must refuse — a guard with an `await` between its grade and its reservation, the 0.1.x release keyed on today, a guard that folds `ESCALATE` into allowed. The real component holds every one. `npm run invariants` checks the document against the suite and CI runs it. No behavioural change beyond the invariants work itself.
 
 ## 0.2.0 — 2026-10-10
 
