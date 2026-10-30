@@ -3,8 +3,8 @@
 // consumer would (through the package name, resolved to the built dist/
 // declarations via this directory's tsconfig `paths`), so a change that
 // breaks the published types breaks this file, not just the JS behaviour.
-import { grade, validateEnvelope, DailyLedger, type Envelope } from '@flashylabs/wdk-policy-guard'
-import { guardSend, PolicyDeniedError, PolicyEscalationRequiredError } from '@flashylabs/wdk-policy-guard/adapters/wdk'
+import { grade, validateEnvelope, DailyLedger, type Envelope } from '@flashyfinancial/wdk-policy-guard'
+import { guardSend, PolicyDeniedError, PolicyEscalationRequiredError } from '@flashyfinancial/wdk-policy-guard/adapters/wdk'
 
 const envelope: Envelope = {
   chain: 'evm:84532',

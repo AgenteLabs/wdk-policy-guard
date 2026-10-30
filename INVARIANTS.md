@@ -1,4 +1,4 @@
-# Invariants — `@flashylabs/wdk-policy-guard`
+# Invariants — `@flashyfinancial/wdk-policy-guard`
 
 What this component guarantees about a spend it stands in front of, each
 enforced by a named piece of code and proved by a named test. The document is

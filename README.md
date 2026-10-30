@@ -1,4 +1,4 @@
-# @flashylabs/wdk-policy-guard
+# @flashyfinancial/wdk-policy-guard
 
 ```
         ██
@@ -14,12 +14,12 @@ A spending-policy layer for wallets built on [Tether's WDK](https://github.com/t
 [![tests](https://github.com/FlashyLabs/wdk-policy-guard/actions/workflows/ci.yml/badge.svg)](https://github.com/FlashyLabs/wdk-policy-guard/actions/workflows/ci.yml)
 [![CodeQL](https://github.com/FlashyLabs/wdk-policy-guard/actions/workflows/codeql.yml/badge.svg)](https://github.com/FlashyLabs/wdk-policy-guard/actions/workflows/codeql.yml)
 [![Scorecard](https://github.com/FlashyLabs/wdk-policy-guard/actions/workflows/scorecard.yml/badge.svg)](https://github.com/FlashyLabs/wdk-policy-guard/security/code-scanning)
-[![npm version](https://img.shields.io/npm/v/@flashylabs/wdk-policy-guard.svg)](https://www.npmjs.com/package/@flashylabs/wdk-policy-guard)
-[![npm downloads](https://img.shields.io/npm/dm/@flashylabs/wdk-policy-guard.svg)](https://www.npmjs.com/package/@flashylabs/wdk-policy-guard)
+[![npm version](https://img.shields.io/npm/v/@flashyfinancial/wdk-policy-guard.svg)](https://www.npmjs.com/package/@flashyfinancial/wdk-policy-guard)
+[![npm downloads](https://img.shields.io/npm/dm/@flashyfinancial/wdk-policy-guard.svg)](https://www.npmjs.com/package/@flashyfinancial/wdk-policy-guard)
 [![license](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](./LICENSE)
 [![node](https://img.shields.io/badge/node-%3E%3D20-brightgreen.svg)](https://nodejs.org)
 
-Built by [Flashy Labs](https://flashyos.com) — part of the open-source toolkit we ship for teams building on Tether's WDK. Its sibling package is [`@flashylabs/wdk-staking-kit`](https://github.com/FlashyLabs/wdk-staking-kit).
+Built by [Flashy Labs](https://flashyos.com) — part of the open-source toolkit we ship for teams building on Tether's WDK. Its sibling package is [`@flashyfinancial/wdk-staking-kit`](https://github.com/FlashyLabs/wdk-staking-kit).
 
 ## Why this exists
 
@@ -30,13 +30,13 @@ This package is that twenty lines, done once, tested from every angle we could f
 ## Install
 
 ```bash
-npm install @flashylabs/wdk-policy-guard
+npm install @flashyfinancial/wdk-policy-guard
 ```
 
 ## Quickstart
 
 ```js
-import { grade, DailyLedger } from '@flashylabs/wdk-policy-guard'
+import { grade, DailyLedger } from '@flashyfinancial/wdk-policy-guard'
 
 const envelope = {
   chain: 'evm:84532',
@@ -71,7 +71,7 @@ if (verdict.verdict === 'ALLOW') {
 ### Wiring it in front of a real send
 
 ```js
-import { guardSend, DailyLedger } from '@flashylabs/wdk-policy-guard/adapters/wdk'
+import { guardSend, DailyLedger } from '@flashyfinancial/wdk-policy-guard/adapters/wdk'
 
 const ledger = new DailyLedger()
 const guardedTransfer = guardSend(
@@ -98,7 +98,7 @@ See [`examples/basic.mjs`](examples/basic.mjs) for a runnable end-to-end example
 | `guardSend(send, opts)` | `./adapters/wdk` | Wraps any async send function with a `grade()` check — call-through only on `ALLOW`. |
 | `PolicyDeniedError`, `PolicyEscalationRequiredError` | `./adapters/wdk` | Thrown by `guardSend()`'s wrapped function on `DENY` / `ESCALATE`. |
 
-Full TypeScript declarations ship with the package — `Envelope` and `SpendRecord` import directly from the package root (`import type { Envelope } from '@flashylabs/wdk-policy-guard'`), generated from the source's own JSDoc so the types can never drift from the implementation. `test-types/consumer.ts` is the type-level test that would fail if they ever did.
+Full TypeScript declarations ship with the package — `Envelope` and `SpendRecord` import directly from the package root (`import type { Envelope } from '@flashyfinancial/wdk-policy-guard'`), generated from the source's own JSDoc so the types can never drift from the implementation. `test-types/consumer.ts` is the type-level test that would fail if they ever did.
 
 ## What it refuses
 
@@ -135,7 +135,7 @@ npx @flashyos/conformance-kit \
 
 # or from an install, where the corpus ships inside the package
 npx @flashyos/conformance-kit \
-  node_modules/@flashylabs/wdk-policy-guard/conformance/policy-guard-1.json \
+  node_modules/@flashyfinancial/wdk-policy-guard/conformance/policy-guard-1.json \
   -- ./my-policy-engine
 ```
 
@@ -192,12 +192,12 @@ committed copy has drifted.
 
 ## Status
 
-Pre-1.0 (`0.2.0`). The `Envelope` and `SpendRecord` shapes are not yet frozen — a field added later ships as a minor version, but a field renamed or a verdict's meaning changed would not. Watch [`CHANGELOG.md`](CHANGELOG.md) across a version bump before pinning a wider range than `^0.2.0`.
+Pre-1.0 (`0.3.0`). The `Envelope` and `SpendRecord` shapes are not yet frozen — a field added later ships as a minor version, but a field renamed or a verdict's meaning changed would not. Watch [`CHANGELOG.md`](CHANGELOG.md) across a version bump before pinning a wider range than `^0.3.0`.
 
 ## Testing
 
 ```bash
-npm test        # 72 tests, node's built-in test runner, no external services
+npm test        # 76 tests, node's built-in test runner, no external services
 npm run check    # confirms the generated manifest is current
 npm run invariants   # INVARIANTS.md holds against the suite (invariants/1)
 ```

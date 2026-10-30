@@ -1,6 +1,6 @@
 name: Publish to npm
 
-# Publishes @flashylabs/wdk-policy-guard when its version changes on main.
+# Publishes @flashyfinancial/wdk-policy-guard when its version changes on main.
 # A version already on the registry is skipped rather than failing on
 # "cannot publish over the previously published version" — makes a re-run
 # idempotent.
@@ -38,11 +38,11 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN_FLASHYOS_CI || secrets.NPM_TOKEN }}
         run: |
           if [ -z "$NODE_AUTH_TOKEN" ]; then
-            echo "::error::No npm token found. Add one with publish rights on the @flashylabs scope as a repo secret named NPM_TOKEN_FLASHYOS_CI or NPM_TOKEN."
+            echo "::error::No npm token found. Add one with publish rights on the @flashyfinancial scope as a repo secret named NPM_TOKEN_FLASHYOS_CI or NPM_TOKEN."
             exit 1
           fi
           if ! WHO=$(npm whoami 2>&1); then
-            echo "::error::The npm token is set but not valid for this scope — npm said: ${WHO}. Confirm this token has publish rights on the @flashylabs scope."
+            echo "::error::The npm token is set but not valid for this scope — npm said: ${WHO}. Confirm this token has publish rights on the @flashyfinancial scope."
             exit 1
           fi
           echo "Authenticated to npm as ${WHO}"
@@ -51,12 +51,12 @@ jobs:
         id: check
         run: |
           V=$(node -p "require('./package.json').version")
-          if [ -n "$(npm view "@flashylabs/wdk-policy-guard@$V" version 2>/dev/null || true)" ]; then
+          if [ -n "$(npm view "@flashyfinancial/wdk-policy-guard@$V" version 2>/dev/null || true)" ]; then
             echo "publish=false" >> "$GITHUB_OUTPUT"
-            echo "::notice::@flashylabs/wdk-policy-guard@$V is already published."
+            echo "::notice::@flashyfinancial/wdk-policy-guard@$V is already published."
           else
             echo "publish=true" >> "$GITHUB_OUTPUT"
-            echo "::notice::@flashylabs/wdk-policy-guard@$V will be published."
+            echo "::notice::@flashyfinancial/wdk-policy-guard@$V will be published."
           fi
 
       - name: Test
