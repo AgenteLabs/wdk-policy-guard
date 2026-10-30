@@ -45,11 +45,11 @@
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/FlashyLabs/wdk-policy-guard.git"
+    "url": "git+https://github.com/AgenteLabs/wdk-policy-guard.git"
   },
-  "homepage": "https://github.com/FlashyLabs/wdk-policy-guard#readme",
+  "homepage": "https://github.com/AgenteLabs/wdk-policy-guard#readme",
   "bugs": {
-    "url": "https://github.com/FlashyLabs/wdk-policy-guard/issues"
+    "url": "https://github.com/AgenteLabs/wdk-policy-guard/issues"
   },
   "engines": {
     "node": ">=20"
