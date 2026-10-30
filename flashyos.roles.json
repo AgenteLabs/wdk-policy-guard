@@ -9,7 +9,7 @@
   "repositories": [
     {
       "name": "wdk-policy-guard",
-      "url": "github.com/FlashyLabs/wdk-policy-guard",
+      "url": "github.com/AgenteLabs/wdk-policy-guard",
       "default": true,
       "holds": [
         "library",

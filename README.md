@@ -11,9 +11,9 @@
 
 A spending-policy layer for wallets built on [Tether's WDK](https://github.com/tetherto/wdk) — or any wallet SDK. It grades a proposed spend against a per-agent envelope *before* anything signs, and returns one of three verdicts: **ALLOW**, **ESCALATE**, or **DENY**, always with a reason.
 
-[![tests](https://github.com/FlashyLabs/wdk-policy-guard/actions/workflows/ci.yml/badge.svg)](https://github.com/FlashyLabs/wdk-policy-guard/actions/workflows/ci.yml)
-[![CodeQL](https://github.com/FlashyLabs/wdk-policy-guard/actions/workflows/codeql.yml/badge.svg)](https://github.com/FlashyLabs/wdk-policy-guard/actions/workflows/codeql.yml)
-[![Scorecard](https://github.com/FlashyLabs/wdk-policy-guard/actions/workflows/scorecard.yml/badge.svg)](https://github.com/FlashyLabs/wdk-policy-guard/security/code-scanning)
+[![tests](https://github.com/AgenteLabs/wdk-policy-guard/actions/workflows/ci.yml/badge.svg)](https://github.com/AgenteLabs/wdk-policy-guard/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/AgenteLabs/wdk-policy-guard/actions/workflows/codeql.yml/badge.svg)](https://github.com/AgenteLabs/wdk-policy-guard/actions/workflows/codeql.yml)
+[![Scorecard](https://github.com/AgenteLabs/wdk-policy-guard/actions/workflows/scorecard.yml/badge.svg)](https://github.com/AgenteLabs/wdk-policy-guard/security/code-scanning)
 [![npm version](https://img.shields.io/npm/v/@flashyfinancial/wdk-policy-guard.svg)](https://www.npmjs.com/package/@flashyfinancial/wdk-policy-guard)
 [![npm downloads](https://img.shields.io/npm/dm/@flashyfinancial/wdk-policy-guard.svg)](https://www.npmjs.com/package/@flashyfinancial/wdk-policy-guard)
 [![license](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](./LICENSE)
@@ -234,4 +234,4 @@ No prize, no token. A spending-policy layer has enough of those jokes already.
 
 ---
 
-Built by [Flashy Labs](https://flashyos.com), the mesh platform for organisations' agents. If something here is broken, unclear, or just interesting, [open an issue](https://github.com/FlashyLabs/wdk-policy-guard/issues) — we read them.
+Built by [Flashy Labs](https://flashyos.com), the mesh platform for organisations' agents. If something here is broken, unclear, or just interesting, [open an issue](https://github.com/AgenteLabs/wdk-policy-guard/issues) — we read them.
