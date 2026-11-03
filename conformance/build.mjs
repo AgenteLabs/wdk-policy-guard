@@ -55,7 +55,7 @@ export function build() {
     profile: 'policy-guard/1',
     version: pkg.version,
     license: 'Apache-2.0',
-    source: 'https://github.com/flashylabs/wdk-policy-guard',
+    source: 'https://github.com/AgenteLabs/wdk-policy-guard',
     about:
       'A conformance corpus for an agent spending policy, in one shape, for an implementation in any language. Any two policy engines agree that a small transfer inside an envelope is allowed; they disagree at the edges, and the edges are where money moves by accident. Most of this corpus is refusals, and the refusals are the substance. Generated from conformance/cases.mjs — regenerated, never hand-edited.',
     protocol: {
