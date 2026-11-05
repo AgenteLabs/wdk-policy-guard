@@ -230,7 +230,7 @@ No prize, no token. A spending-policy layer has enough of those jokes already.
 
 ## License
 
-[Apache-2.0](./LICENSE) © 2026 Flashy Labs
+[Apache-2.0](./LICENSE) © 2026 Agente Labs
 
 ---
 
